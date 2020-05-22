@@ -34,7 +34,7 @@ public class Main {
 
         System.out.println("\nОрганизации,основанные после введенной даты:\n");
         companies.stream()
-                .filter(company -> LocalDate.parse(company.getCompanyDate(), dateFormat).isAfter(date))
+                .filter(company -> LocalDate.parse(company.getCompanyDate()).isAfter(date))
                 .forEach(company -> System.out.println(company.getNameFull() + " " + company.getCompanyDate()));
 
         AtomicInteger sum = new AtomicInteger();
