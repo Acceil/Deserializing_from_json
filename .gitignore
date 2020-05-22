@@ -1,0 +1,6 @@
+/*.iml
+/.DS_Store
+/.idea
+/src/main/resources/local.properties
+/src/main/resources/static/images/
+/target/

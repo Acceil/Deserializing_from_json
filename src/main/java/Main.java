@@ -27,14 +27,14 @@ public class Main {
         );
 
         System.out.println("Все компании:\n");
-        companies.forEach(company -> System.out.println(company.toString()));
+        companies.forEach(System.out::println);
 
         System.out.println("\nУкажите дату:");
         LocalDate date = LocalDate.parse(sc.nextLine(), dateFormat);
 
         System.out.println("\nОрганизации,основанные после введенной даты:\n");
         companies.stream()
-                .filter(company -> LocalDate.parse(company.getCompanyDate()).isAfter(date))
+                .filter(company -> LocalDate.parse(company.getCompanyDate(), dateFormat).isAfter(date))
                 .forEach(company -> System.out.println(company.getNameFull() + " " + company.getCompanyDate()));
 
         AtomicInteger sum = new AtomicInteger();
@@ -52,8 +52,8 @@ public class Main {
 
         companies.forEach(
                 company -> company.getList().stream().filter(
-                        companySecurity -> companySecurity.getCurrency().getCode().equals(currencyCode)
-                ).forEach(companySecurity -> System.out.println(companySecurity.getId() + " "
+                        companySecurity -> companySecurity.getCurrency().getCode().equals(currencyCode))
+                        .forEach(companySecurity -> System.out.println(companySecurity.getId() + " "
                         + companySecurity.getCode())
                 ));
     }
